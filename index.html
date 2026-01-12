@@ -2,30 +2,34 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Quantum & Life - Meditation Center</title>
+    <title>Quantum & Life - Centro de Meditación Integral</title>
     <style>
-        body { margin: 0; background: #010409; color: #e0f2fe; font-family: 'Segoe UI Light', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; }
-        .container { width: 450px; padding: 30px; border: 1px solid #1e3a8a; border-radius: 20px; background: radial-gradient(circle at top, #001e3c 0%, #010409 100%); text-align: center; box-shadow: 0 0 60px rgba(56, 189, 248, 0.2); }
+        body { margin: 0; background: #000205; color: #e0f2fe; font-family: 'Segoe UI Light', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; }
+        .container { width: 500px; padding: 25px; border: 1px solid #1e3a8a; border-radius: 25px; background: radial-gradient(circle at top, #001e3c 0%, #000205 100%); text-align: center; box-shadow: 0 0 80px rgba(56, 189, 248, 0.15); }
         
-        .core { width: 14px; height: 14px; background: #fff; border-radius: 50%; margin: 0 auto 30px; box-shadow: 0 0 80px 25px #38bdf8; opacity: 0.1; }
-        .active-pulse { animation: breathe 12s infinite ease-in-out; opacity: 1; }
-        @keyframes breathe { 0%, 100% { transform: scale(1); filter: blur(4px); } 50% { transform: scale(15); filter: blur(2px); } }
+        .core { width: 15px; height: 15px; background: #fff; border-radius: 50%; margin: 0 auto 20px; box-shadow: 0 0 60px 20px #38bdf8; opacity: 0.1; transition: all 2s ease; }
+        .active-pulse { animation: breathe 14s infinite ease-in-out; opacity: 1; }
+        @keyframes breathe { 0%, 100% { transform: scale(1); filter: blur(5px); } 50% { transform: scale(10); filter: blur(3px); } }
 
-        .playlist { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; margin-bottom: 20px; text-align: left; }
-        .playlist-item { padding: 10px; cursor: pointer; border-radius: 8px; margin-bottom: 5px; border: 1px solid transparent; transition: 0.3s; font-size: 0.85rem; }
+        .playlist { background: rgba(255,255,255,0.03); padding: 12px; border-radius: 15px; margin-bottom: 15px; text-align: left; border: 1px solid rgba(255,255,255,0.1); max-height: 320px; overflow-y: auto; }
+        .playlist-item { padding: 10px; cursor: pointer; border-radius: 10px; margin-bottom: 6px; border: 1px solid transparent; transition: 0.3s; font-size: 0.75rem; line-height: 1.2; }
         .playlist-item:hover { background: rgba(56, 189, 248, 0.1); }
-        .playlist-item.selected { background: rgba(56, 189, 248, 0.2); border-color: #38bdf8; color: #fff; }
+        .playlist-item.selected { background: rgba(56, 189, 248, 0.15); border-color: #38bdf8; color: #fff; }
 
-        .player-section { background: rgba(255,255,255,0.02); padding: 15px; border-radius: 12px; margin-bottom: 15px; border: 1px solid rgba(56, 189, 248, 0.1); }
-        .label { font-size: 0.7rem; letter-spacing: 2px; margin-bottom: 10px; display: block; color: #7dd3fc; text-transform: uppercase; font-weight: bold; }
+        .player-section { background: rgba(255,255,255,0.02); padding: 12px; border-radius: 15px; margin-bottom: 12px; border: 1px solid rgba(56, 189, 248, 0.05); }
+        .label { font-size: 0.6rem; letter-spacing: 2px; margin-bottom: 8px; display: block; color: #7dd3fc; text-transform: uppercase; font-weight: bold; }
         
-        .controls { display: flex; gap: 8px; justify-content: center; margin-bottom: 12px; }
-        button { background: none; border: 1px solid #38bdf8; color: #38bdf8; padding: 8px 15px; cursor: pointer; border-radius: 5px; font-size: 0.7rem; text-transform: uppercase; transition: 0.3s; flex: 1; }
+        .controls { display: flex; gap: 8px; justify-content: center; margin-bottom: 8px; }
+        button { background: none; border: 1px solid #38bdf8; color: #38bdf8; padding: 8px; cursor: pointer; border-radius: 8px; font-size: 0.65rem; text-transform: uppercase; transition: 0.3s; flex: 1; }
         button:hover { background: #38bdf8; color: #000; }
-        button.active { background: #38bdf8; color: #000; }
+        button.active { background: #fff; border-color: #fff; color: #000; }
 
         .vol-slider { width: 100%; cursor: pointer; accent-color: #38bdf8; }
-        #status { font-size: 0.85rem; color: #64748b; margin-top: 15px; font-style: italic; min-height: 2.5em; line-height: 1.2; }
+        #status { font-size: 0.75rem; color: #94a3b8; margin-top: 10px; min-height: 3.5em; line-height: 1.4; padding: 0 10px; font-style: italic; }
+        
+        /* Personalización del scroll */
+        .playlist::-webkit-scrollbar { width: 5px; }
+        .playlist::-webkit-scrollbar-thumb { background: #1e3a8a; border-radius: 10px; }
     </style>
 </head>
 <body>
@@ -34,12 +38,18 @@
     <div id="visual-core" class="core"></div>
 
     <div class="playlist">
-        <span class="label" style="margin-left:10px">Selecciona tu Meditación:</span>
+        <span class="label" style="margin-left:10px">Playlist de Meditación:</span>
         <div id="item-0" class="playlist-item selected" onclick="selectMeditation(0)">
-            <strong>1. Coherencia Cardíaca</strong><br><small>Estilo Joe Dispenza - El Vacío</small>
+            <strong>1. Coherencia Cardíaca</strong><br><small>Vacío y Espacio (Dispenza)</small>
         </div>
         <div id="item-1" class="playlist-item" onclick="selectMeditation(1)">
-            <strong>2. Restauración Vital</strong><br><small>Tiroides y Circulación - Nuevo Pacto</small>
+            <strong>2. Restauración Biológica</strong><br><small>Tiroides y Circulación</small>
+        </div>
+        <div id="item-2" class="playlist-item" onclick="selectMeditation(2)">
+            <strong>3. Nuevo Pacto (Salud)</strong><br><small>Identidad y Plenitud Física</small>
+        </div>
+        <div id="item-3" class="playlist-item" onclick="selectMeditation(3)">
+            <strong>4. Coherencia Financiera</strong><br><small>Provisión, Mayordomía y Paz</small>
         </div>
     </div>
 
@@ -54,16 +64,16 @@
     </div>
 
     <div class="player-section">
-        <span class="label">Guía de Voz</span>
+        <span class="label">Voz Guía</span>
         <div class="controls">
-            <button id="vPlay" onclick="startVoice()">Iniciar Guía</button>
+            <button id="vPlay" onclick="startVoice()">Iniciar</button>
             <button id="vPause" onclick="pauseVoice()">Pausar</button>
-            <button onclick="stopVoice()">Reiniciar</button>
+            <button onclick="stopVoice()">Reset</button>
         </div>
         <input type="range" class="vol-slider" id="voiceVol" min="0" max="1" step="0.01" value="1" oninput="updateVoiceVol()">
     </div>
     
-    <div id="status">Selecciona una meditación y presiona Iniciar Guía</div>
+    <div id="status">Selecciona una guía para comenzar...</div>
 </div>
 
 <audio id="bgAudio" loop preload="auto">
@@ -81,23 +91,28 @@
     let timer;
 
     const medSkins = [
-        // PLAYLIST 0: COHERENCIA CARDÍACA (DISPENZA)
+        // 0. DISPENZA
+        [{t:"Cierra los ojos. Conviértete en nada. Sé nadie.", p:10000}, {t:"Siente el espacio que ocupan tus sienes en el vacío.", p:12000}, {t:"Lleva tu atención al pecho. Respira a través de tu corazón.", p:12000}, {t:"Gratitud pura. Arterias relajándose. Sangre como seda.", p:18000}, {t:"Presión perfecta. Coherencia pura.", p:10000}],
+        // 1. TIROIDES
+        [{t:"La vida ya reside en ti. Conecta con tu diseño.", p:10000}, {t:"Atención a tu tiroides. Centro de equilibrio y descanso.", p:12000}, {t:"Metabolismo alineándose a la Gracia.", p:12000}, {t:"Circulación como un río de vida sin obstáculos.", p:14000}, {t:"Amor perfecto que echa fuera el temor. Shalom.", p:10000}],
+        // 2. NUEVO PACTO SALUD
+        [{t:"Entra en el descanso del Nuevo Pacto.", p:12000}, {t:"Ordenamos a tu metabolismo volver al ritmo de la Gracia.", p:15000}, {t:"Tu sangre es vivificada por el Espíritu.", p:15000}, {t:"Tu cuerpo recuerda su salud original.", p:18000}, {t:"Ya está hecho. Shalom.", p:10000}],
+        // 3. FINANCIERA (TEXTO COMPLETO)
         [
-            { t: "Cierra los ojos. Conviértete en nada. Sé nadie... en ningún lugar... en ningún tiempo.", p: 9000 },
-            { t: "Siente el espacio que ocupan tus sienes en el vacío. La oscuridad detrás de tus ojos.", p: 11000 },
-            { t: "Lleva tu atención al centro de tu pecho. Respira a través de tu corazón.", p: 11000 },
-            { t: "Siente gratitud pura ahora. Visualiza tus arterias relajándose. La sangre fluye como seda.", p: 18000 },
-            { t: "Tu presión arterial es perfecta. Eres salud. Eres coherencia.", p: 18000 },
-            { t: "Descansa en este vacío. Recibe tu nueva vida. Shalom.", p: 8000 }
-        ],
-        // PLAYLIST 1: RESTAURACIÓN TIROIDES Y CIRCULACIÓN (NUEVO PACTO)
-        [
-            { t: "Reconoce que la vida ya reside en ti. No estás fabricando salud, estás conectando con tu diseño original.", p: 8000 },
-            { t: "Lleva tu atención a tu cuello, a tu tiroides. Visualiza este centro de equilibrio recibiendo descanso profundo.", p: 10000 },
-            { t: "Siente tu metabolismo alineándose. El equilibrio es tu estado natural en el Nuevo Pacto.", p: 11000 },
-            { t: "Observa tu sangre. Visualiza tu circulación como un río de vida fluyendo sin obstáculos.", p: 11000 },
-            { t: "No hay temor. El amor perfecto echa fuera el temor y relaja cada arteria de tu cuerpo.", p: 13000 },
-            { t: "Tu cuerpo es el templo de la Verdad. Eres coherencia, salud y vida. Shalom.", p: 10000 }
+            { t: "Cierra los ojos. No estás huyendo de nada. Estás entrando.", p: 8000 },
+            { t: "Siente el peso de tu cuerpo. No necesitas sostenerte, ya estás sostenido.", p: 10000 },
+            { t: "Inhala para recordar que ya hay vida en ti. Exhala la urgencia y la presión.", p: 12000 },
+            { t: "No estás en peligro. No estás tarde. No estás desprovisto.", p: 12000 },
+            { t: "En el centro de tu pecho, recuerda: Tu provisión comienza en la filiación, no en el esfuerzo.", p: 15000 },
+            { t: "No eres un buscador de recursos. Eres un heredero aprendiendo a administrar.", p: 15000 },
+            { t: "La salud financiera es la ausencia de miedo gobernando tus decisiones.", p: 15000 },
+            { t: "No estás intentando convencer a la vida de que te bendiga. Te mueves en coherencia con lo que ya te fue dado.", p: 18000 },
+            { t: "Observa tus manos. Manos que crean, ordenan y administran. No hay espiritualidad en la escasez.", p: 18000 },
+            { t: "No tengo que ganarme lo que ya me fue confiado. Produces desde la plenitud.", p: 20000 },
+            { t: "Mira tu situación financiera actual sin juicio. Dile: No me defines. No gobiernas mis decisiones.", p: 22000 },
+            { t: "La abundancia del Nuevo Pacto es flujo. Lo que entra con paz, permanece.", p: 18000 },
+            { t: "Administro con sabiduría lo que me ha sido confiado. Mi vida financiera se ordena desde dentro.", p: 20000 },
+            { t: "Shalom. Camina desde este estado.", p: 10000 }
         ]
     ];
 
@@ -106,7 +121,10 @@
         selectedPlaylist = index;
         document.querySelectorAll('.playlist-item').forEach(el => el.classList.remove('selected'));
         document.getElementById('item-' + index).classList.add('selected');
-        status.innerText = "Seleccionado: " + (index === 0 ? "Coherencia Cardíaca" : "Restauración Vital");
+        
+        const colors = ["#38bdf8", "#10b981", "#fbbf24", "#a855f7"];
+        core.style.boxShadow = `0 0 60px 20px ${colors[index]}`;
+        status.innerText = "Playlist seleccionada. Presiona Iniciar.";
     }
 
     function playMusic() { music.play(); }
@@ -129,50 +147,40 @@
         document.getElementById('vPause').classList.add('active');
         document.getElementById('vPlay').classList.remove('active');
         core.classList.remove('active-pulse');
-        status.innerText = "Guía en pausa";
     }
 
     function stopVoice() {
-        voicePaused = true;
-        currentStep = 0;
+        voicePaused = true; currentStep = 0;
         window.speechSynthesis.cancel();
         clearTimeout(timer);
         core.classList.remove('active-pulse');
         document.getElementById('vPlay').classList.remove('active');
         document.getElementById('vPause').classList.remove('active');
-        status.innerText = "Sesión detenida";
+        status.innerText = "Lista para iniciar";
     }
 
     function hablar(index) {
         const guion = medSkins[selectedPlaylist];
         if (voicePaused || index >= guion.length) {
-            if (index >= guion.length) status.innerText = "Shalom. Ya está hecho.";
+            if (index >= guion.length) status.innerText = "Shalom. La Verdad te hace libre.";
             return;
         }
         currentStep = index;
-
         const msg = new SpeechSynthesisUtterance(guion[index].t);
         msg.lang = 'es-ES';
-        msg.rate = 0.65;
-        msg.pitch = 0.7;
+        msg.rate = 0.62;
+        msg.pitch = 0.75;
         msg.volume = document.getElementById('voiceVol').value;
 
         const voices = window.speechSynthesis.getVoices();
-        const vozM = voices.find(v => v.lang.includes('es') && (v.name.includes('David') || v.name.includes('Pablo') || v.name.includes('Male')));
+        const vozM = voices.find(v => v.lang.includes('es') && (v.name.includes('David') || v.name.includes('Pablo')));
         if (vozM) msg.voice = vozM;
 
         msg.onstart = () => { status.innerText = guion[index].t; };
-        msg.onend = () => {
-            if (!voicePaused) {
-                timer = setTimeout(() => hablar(index + 1), guion[index].p);
-            }
-        };
-
+        msg.onend = () => { if (!voicePaused) timer = setTimeout(() => hablar(index + 1), guion[index].p); };
         window.speechSynthesis.speak(msg);
     }
-
     window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
 </script>
-
 </body>
 </html>
