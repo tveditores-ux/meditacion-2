@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Quantum & Life - Bucle Infinito</title>
+    <title>Quantum & Life - Vida Plena</title>
     <style>
         body { margin: 0; background: #000205; color: #e0f2fe; font-family: 'Segoe UI Light', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; }
         .container { width: 500px; padding: 25px; border: 1px solid #1e3a8a; border-radius: 25px; background: radial-gradient(circle at top, #001e3c 0%, #000205 100%); text-align: center; box-shadow: 0 0 80px rgba(56, 189, 248, 0.15); }
@@ -84,7 +84,6 @@
     const core = document.getElementById('visual-core');
     const status = document.getElementById('status');
     
-    // Forzar bucle por JavaScript para evitar cortes en navegadores
     music.addEventListener('ended', function() {
         this.currentTime = 0;
         this.play();
@@ -97,11 +96,11 @@
 
     const medSkins = [
         // 0. DISPENZA
-        [{t:"Cierra los ojos. Conviértete en nada. Sé nadie.", p:10000}, {t:"Siente el espacio que ocupan tus sienes en el vacío.", p:12000}, {t:"Lleva tu atención al pecho. Respira a través de tu corazón.", p:12000}, {t:"Gratitud pura. Arterias relajándose. Sangre como seda.", p:18000}, {t:"Presión perfecta. Coherencia pura.", p:10000}],
+        [{t:"Cierra los ojos. Conviértete en nada. Sé nadie.", p:10000}, {t:"Siente el espacio que ocupan tus sienes en el vacío.", p:12000}, {t:"Lleva tu atención al pecho. Respira a través de tu corazón.", p:12000}, {t:"Gratitud pura. Arterias relajándose. Sangre como seda.", p:18000}, {t:"Presión perfecta. Coherencia pura.", p:10000}, {t:"Vida plena.", p:5000}],
         // 1. TIROIDES
-        [{t:"La vida ya reside en ti. Conecta con tu diseño.", p:10000}, {t:"Atención a tu tiroides. Centro de equilibrio y descanso.", p:12000}, {t:"Metabolismo alineándose a la Gracia.", p:12000}, {t:"Circulación como un río de vida sin obstáculos.", p:14000}, {t:"Amor perfecto que echa fuera el temor. Shalom.", p:10000}],
+        [{t:"La vida ya reside en ti. Conecta con tu diseño.", p:10000}, {t:"Atención a tu tiroides. Centro de equilibrio y descanso.", p:12000}, {t:"Metabolismo alineándose a la Gracia.", p:12000}, {t:"Circulación como un río de vida sin obstáculos.", p:14000}, {t:"Amor perfecto que echa fuera el temor. Vida plena.", p:10000}],
         // 2. NUEVO PACTO SALUD
-        [{t:"Entra en el descanso del Nuevo Pacto.", p:12000}, {t:"Ordenamos a tu metabolismo volver al ritmo de la Gracia.", p:15000}, {t:"Tu sangre es vivificada por el Espíritu.", p:15000}, {t:"Tu cuerpo recuerda su salud original.", p:18000}, {t:"Ya está hecho. Shalom.", p:10000}],
+        [{t:"Entra en el descanso del Nuevo Pacto.", p:12000}, {t:"Ordenamos a tu metabolismo volver al ritmo de la Gracia.", p:15000}, {t:"Tu sangre es vivificada por el Espíritu.", p:15000}, {t:"Tu cuerpo recuerda su salud original.", p:18000}, {t:"Ya está hecho. Vida plena.", p:10000}],
         // 3. FINANCIERA
         [
             { t: "Cierra los ojos. No estás huyendo de nada. Estás entrando.", p: 8000 },
@@ -117,7 +116,7 @@
             { t: "Mira tu situación financiera actual sin juicio. Dile: No me defines. No gobiernas mis decisiones.", p: 22000 },
             { t: "La abundancia del Nuevo Pacto es flujo. Lo que entra con paz, permanece.", p: 18000 },
             { t: "Administro con sabiduría lo que me ha sido confiado. Mi vida financiera se ordena desde dentro.", p: 20000 },
-            { t: "Shalom. Camina desde este estado.", p: 10000 }
+            { t: "Vida plena. Camina desde este estado.", p: 10000 }
         ]
     ];
 
@@ -160,13 +159,13 @@
         core.classList.remove('active-pulse');
         document.getElementById('vPlay').classList.remove('active');
         document.getElementById('vPause').classList.remove('active');
-        status.innerText = "Lista para iniciar";
+        status.innerText = "Vida plena.";
     }
 
     function hablar(index) {
         const guion = medSkins[selectedPlaylist];
         if (voicePaused || index >= guion.length) {
-            if (index >= guion.length) status.innerText = "Shalom.";
+            if (index >= guion.length) status.innerText = "Vida plena.";
             return;
         }
         currentStep = index;
@@ -185,3 +184,4 @@
     window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
 </script>
 </body>
+</html>
