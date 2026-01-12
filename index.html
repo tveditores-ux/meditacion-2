@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Quantum & Life - Centro de Meditación Integral</title>
+    <title>Quantum & Life - Bucle Infinito</title>
     <style>
         body { margin: 0; background: #000205; color: #e0f2fe; font-family: 'Segoe UI Light', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; }
         .container { width: 500px; padding: 25px; border: 1px solid #1e3a8a; border-radius: 25px; background: radial-gradient(circle at top, #001e3c 0%, #000205 100%); text-align: center; box-shadow: 0 0 80px rgba(56, 189, 248, 0.15); }
@@ -27,7 +27,6 @@
         .vol-slider { width: 100%; cursor: pointer; accent-color: #38bdf8; }
         #status { font-size: 0.75rem; color: #94a3b8; margin-top: 10px; min-height: 3.5em; line-height: 1.4; padding: 0 10px; font-style: italic; }
         
-        /* Personalización del scroll */
         .playlist::-webkit-scrollbar { width: 5px; }
         .playlist::-webkit-scrollbar-thumb { background: #1e3a8a; border-radius: 10px; }
     </style>
@@ -54,7 +53,7 @@
     </div>
 
     <div class="player-section">
-        <span class="label">Música Ondas Alfa</span>
+        <span class="label">Música Ondas Alfa (Bucle Infinito)</span>
         <div class="controls">
             <button onclick="playMusic()">Play</button>
             <button onclick="pauseMusic()">Pausa</button>
@@ -85,6 +84,12 @@
     const core = document.getElementById('visual-core');
     const status = document.getElementById('status');
     
+    // Forzar bucle por JavaScript para evitar cortes en navegadores
+    music.addEventListener('ended', function() {
+        this.currentTime = 0;
+        this.play();
+    }, false);
+
     let voicePaused = false;
     let currentStep = 0;
     let selectedPlaylist = 0;
@@ -97,7 +102,7 @@
         [{t:"La vida ya reside en ti. Conecta con tu diseño.", p:10000}, {t:"Atención a tu tiroides. Centro de equilibrio y descanso.", p:12000}, {t:"Metabolismo alineándose a la Gracia.", p:12000}, {t:"Circulación como un río de vida sin obstáculos.", p:14000}, {t:"Amor perfecto que echa fuera el temor. Shalom.", p:10000}],
         // 2. NUEVO PACTO SALUD
         [{t:"Entra en el descanso del Nuevo Pacto.", p:12000}, {t:"Ordenamos a tu metabolismo volver al ritmo de la Gracia.", p:15000}, {t:"Tu sangre es vivificada por el Espíritu.", p:15000}, {t:"Tu cuerpo recuerda su salud original.", p:18000}, {t:"Ya está hecho. Shalom.", p:10000}],
-        // 3. FINANCIERA (TEXTO COMPLETO)
+        // 3. FINANCIERA
         [
             { t: "Cierra los ojos. No estás huyendo de nada. Estás entrando.", p: 8000 },
             { t: "Siente el peso de tu cuerpo. No necesitas sostenerte, ya estás sostenido.", p: 10000 },
@@ -121,10 +126,9 @@
         selectedPlaylist = index;
         document.querySelectorAll('.playlist-item').forEach(el => el.classList.remove('selected'));
         document.getElementById('item-' + index).classList.add('selected');
-        
         const colors = ["#38bdf8", "#10b981", "#fbbf24", "#a855f7"];
         core.style.boxShadow = `0 0 60px 20px ${colors[index]}`;
-        status.innerText = "Playlist seleccionada. Presiona Iniciar.";
+        status.innerText = "Guía seleccionada. Pulsa Iniciar.";
     }
 
     function playMusic() { music.play(); }
@@ -162,7 +166,7 @@
     function hablar(index) {
         const guion = medSkins[selectedPlaylist];
         if (voicePaused || index >= guion.length) {
-            if (index >= guion.length) status.innerText = "Shalom. La Verdad te hace libre.";
+            if (index >= guion.length) status.innerText = "Shalom.";
             return;
         }
         currentStep = index;
@@ -171,11 +175,9 @@
         msg.rate = 0.62;
         msg.pitch = 0.75;
         msg.volume = document.getElementById('voiceVol').value;
-
         const voices = window.speechSynthesis.getVoices();
         const vozM = voices.find(v => v.lang.includes('es') && (v.name.includes('David') || v.name.includes('Pablo')));
         if (vozM) msg.voice = vozM;
-
         msg.onstart = () => { status.innerText = guion[index].t; };
         msg.onend = () => { if (!voicePaused) timer = setTimeout(() => hablar(index + 1), guion[index].p); };
         window.speechSynthesis.speak(msg);
@@ -183,4 +185,3 @@
     window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
 </script>
 </body>
-</html>
