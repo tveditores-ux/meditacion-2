@@ -3,25 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantum & Life - Experiencia Profesional</title>
+    <title>Quantum & Life - Experiencia de Consciencia</title>
     <style>
         :root { --primary: #38bdf8; --bg: #000205; }
         body { margin: 0; background: var(--bg); color: #e0f2fe; font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 15px; box-sizing: border-box; }
-        .container { width: 100%; max-width: 550px; padding: 30px; border: 1px solid #1e3a8a; border-radius: 35px; background: radial-gradient(circle at top, #001e3c 0%, #000205 100%); text-align: center; box-shadow: 0 0 60px rgba(56, 189, 248, 0.1); }
-        .core { width: 14px; height: 14px; background: #fff; border-radius: 50%; margin: 0 auto 25px; box-shadow: 0 0 50px 15px var(--primary); opacity: 0.2; transition: all 2s ease; }
+        
+        .container { width: 100%; max-width: 550px; padding: 25px; border: 1px solid #1e3a8a; border-radius: 35px; background: radial-gradient(circle at top, #001e3c 0%, #000205 100%); text-align: center; box-shadow: 0 0 60px rgba(56, 189, 248, 0.1); }
+        
+        .core { width: 14px; height: 14px; background: #fff; border-radius: 50%; margin: 0 auto 20px; box-shadow: 0 0 50px 15px var(--primary); opacity: 0.2; transition: all 2s ease; }
         .active-pulse { animation: breathe 12s infinite ease-in-out; opacity: 1; }
         @keyframes breathe { 0%, 100% { transform: scale(1); filter: blur(4px); } 50% { transform: scale(10); filter: blur(2px); } }
-        .playlist { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 20px; margin-bottom: 25px; text-align: left; border: 1px solid rgba(255,255,255,0.1); max-height: 250px; overflow-y: auto; }
-        .playlist-item { padding: 14px; cursor: pointer; border-radius: 12px; margin-bottom: 8px; border: 1px solid transparent; transition: 0.3s; font-size: 0.85rem; line-height: 1.4; }
-        .playlist-item.selected { background: rgba(56, 189, 248, 0.15); border-color: var(--primary); color: #fff; box-shadow: inset 0 0 10px rgba(56, 189, 248, 0.2); }
-        .player-section { background: rgba(255,255,255,0.02); padding: 18px; border-radius: 18px; margin-bottom: 15px; border: 1px solid rgba(56, 189, 248, 0.05); }
-        .label { font-size: 0.65rem; letter-spacing: 2px; margin-bottom: 12px; display: block; color: #7dd3fc; text-transform: uppercase; font-weight: bold; opacity: 0.8; }
-        .controls { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 12px; }
-        button { background: rgba(56, 189, 248, 0.05); border: 1px solid var(--primary); color: var(--primary); padding: 12px; cursor: pointer; border-radius: 12px; font-size: 0.7rem; text-transform: uppercase; font-weight: bold; transition: 0.3s; }
-        button:hover { background: rgba(56, 189, 248, 0.1); }
-        button.active { background: #fff; color: #000; border-color: #fff; box-shadow: 0 0 20px #fff; }
-        .vol-slider { width: 100%; cursor: pointer; accent-color: var(--primary); height: 5px; border-radius: 5px; appearance: none; background: rgba(255,255,255,0.1); }
-        #status { font-size: 0.95rem; color: #94a3b8; margin-top: 20px; min-height: 5em; line-height: 1.6; display: flex; align-items: center; justify-content: center; font-style: italic; padding: 0 20px; }
+
+        .playlist { background: rgba(255,255,255,0.03); padding: 10px; border-radius: 20px; margin-bottom: 20px; text-align: left; border: 1px solid rgba(255,255,255,0.1); max-height: 220px; overflow-y: auto; }
+        .playlist-item { padding: 12px; cursor: pointer; border-radius: 12px; margin-bottom: 8px; border: 1px solid transparent; transition: 0.3s; font-size: 0.85rem; line-height: 1.4; }
+        .playlist-item.selected { background: rgba(56, 189, 248, 0.15); border-color: var(--primary); color: #fff; }
+
+        .player-section { background: rgba(255,255,255,0.02); padding: 15px; border-radius: 18px; margin-bottom: 12px; border: 1px solid rgba(56, 189, 248, 0.05); text-align: left; }
+        .label { font-size: 0.6rem; letter-spacing: 2px; margin-bottom: 10px; display: block; color: #7dd3fc; text-transform: uppercase; font-weight: bold; opacity: 0.8; }
+        
+        select { width: 100%; background: #001e3c; color: var(--primary); border: 1px solid var(--primary); padding: 8px; border-radius: 8px; font-size: 0.8rem; outline: none; margin-bottom: 10px; cursor: pointer; }
+        
+        .controls { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+        button { background: rgba(56, 189, 248, 0.05); border: 1px solid var(--primary); color: var(--primary); padding: 10px; cursor: pointer; border-radius: 10px; font-size: 0.7rem; text-transform: uppercase; font-weight: bold; transition: 0.3s; }
+        button.active { background: #fff; color: #000; border-color: #fff; }
+
+        .vol-slider { width: 100%; cursor: pointer; accent-color: var(--primary); height: 4px; }
+        
+        #status { font-size: 0.9rem; color: #94a3b8; margin-top: 15px; min-height: 4em; line-height: 1.5; display: flex; align-items: center; justify-content: center; font-style: italic; padding: 0 10px; }
     </style>
 </head>
 <body>
@@ -30,7 +38,7 @@
     <div id="visual-core" class="core"></div>
 
     <div class="playlist">
-        <span class="label">Inmersiones Disponibles:</span>
+        <span class="label">Inmersión:</span>
         <div id="item-0" class="playlist-item selected" onclick="selectMeditation(0)">
             <strong>1. El Escándalo de la Gracia</strong><br><small>Sobre el fin de la meritocracia</small>
         </div>
@@ -52,17 +60,8 @@
     </div>
 
     <div class="player-section">
-        <span class="label">Fondo Atmosférico</span>
-        <div class="controls">
-            <button onclick="playMusic()">Play</button>
-            <button onclick="pauseMusic()">Pausa</button>
-            <button onclick="stopMusic()">Stop</button>
-        </div>
-        <input type="range" class="vol-slider" id="musicVol" min="0" max="1" step="0.01" value="0.3" oninput="updateMusicVol()">
-    </div>
-
-    <div class="player-section">
-        <span class="label">Voz de la Consciencia</span>
+        <span class="label">Configuración de Voz:</span>
+        <select id="voiceSelect"><option value="">Cargando voces...</option></select>
         <div class="controls">
             <button id="vPlay" onclick="startVoice()">Iniciar</button>
             <button id="vPause" onclick="pauseVoice()">Pausar</button>
@@ -70,8 +69,18 @@
         </div>
         <input type="range" class="vol-slider" id="voiceVol" min="0" max="1" step="0.01" value="0.9" oninput="updateVoiceVol()">
     </div>
+
+    <div class="player-section">
+        <span class="label">Música de Fondo:</span>
+        <div class="controls">
+            <button onclick="playMusic()">Play</button>
+            <button onclick="pauseMusic()">Pausa</button>
+            <button onclick="stopMusic()">Stop</button>
+        </div>
+        <input type="range" class="vol-slider" id="musicVol" min="0" max="1" step="0.01" value="0.2" oninput="updateMusicVol()">
+    </div>
     
-    <div id="status">Selecciona un camino para tu consciencia...</div>
+    <div id="status">Selecciona una voz y comienza el diálogo...</div>
 </div>
 
 <audio id="bgAudio" loop>
@@ -82,35 +91,61 @@
     const music = document.getElementById('bgAudio');
     const core = document.getElementById('visual-core');
     const status = document.getElementById('status');
+    const voiceSelect = document.getElementById('voiceSelect');
+    
     let isSpeaking = false;
     let currentStep = 0;
     let selectedPlaylist = 0;
     let timer;
+    let voices = [];
+
+    // Cargar voces del sistema
+    function loadVoices() {
+        voices = window.speechSynthesis.getVoices();
+        voiceSelect.innerHTML = '';
+        const esVoices = voices.filter(v => v.lang.includes('es'));
+        
+        esVoices.forEach((voice, i) => {
+            const option = document.createElement('option');
+            option.value = i;
+            option.textContent = `${voice.name} (${voice.lang})`;
+            voiceSelect.appendChild(option);
+        });
+
+        if (esVoices.length === 0) {
+            const option = document.createElement('option');
+            option.textContent = "No se hallaron voces en español";
+            voiceSelect.appendChild(option);
+        }
+    }
+
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+    loadVoices();
 
     const medSkins = [
-        // 1. GRACIA ESCÁNDALO (300+ palabras)
+        // 1. GRACIA ESCÁNDALO
         [
-            {t: "Cierra los ojos y detente. Escucha el ruido de tu propia mente intentando justificar tu existencia. ¿Sabes por qué te cuesta tanto descansar de verdad? Es porque, aunque no lo digas, crees que la vida tiene que ser justa. Has sido entrenado para creer que el valor depende del esfuerzo y que la recompensa es siempre el eco del sudor. Pero hoy, quiero que consideres algo que ofende tu lógica: la gracia no es justa. Si fuera justa, no sería gracia. La justicia es recibir exactamente lo que mereces, pero lo que te rodea ahora es un escándalo divino. Es el favor inmerecido que se derrama sobre el que está quebrado, sobre el que no tiene nada que ofrecer. El ego humano siempre prefiere una deuda que pueda pagar a un regalo que no puede devolver. Quieres una factura, un recibo que demuestre que pusiste de tu parte para ser digno. Pero en este espacio de silencio, debes admitir que el sistema de intercambio ha sido abolido. No eres alguien que está ayudando a Dios a salvarse; eres alguien que estaba muerto y a quien se le ha impartido vida. No se ayuda a un cadáver a salir de la tumba. Siente cómo se disuelve tu orgullo al aceptar que no tienes nada, absolutamente nada, que ofrecer a cambio de este amor infinito. El abrazo que sientes ahora no es el premio por haber vuelto; es el poder que te restauró mientras aún estabas lejos. No esperes a limpiarte para acercarte, porque es el acercarte lo que te limpia. Suelta el remo de tu mérito personal y deja que la corriente de este amor incondicional te lleve a donde tus fuerzas nunca podrían. Descansa en el asombro de saber que el Juez ya ha dictado su última palabra, y no se basa en tu desempeño de ayer, sino en un sacrificio que ya fue consumado. Esto es libertad.", p: 5000}
+            {t: "Detente un instante. Deja de correr detrás de esa versión de ti mismo que crees que debes alcanzar para ser valioso. Escucha bien: la gracia no es justa, y ese es su mayor poder. Has pasado años intentando equilibrar una balanza invisible, creyendo que si haces lo correcto, si oras lo suficiente, si eres lo suficientemente bueno, entonces la vida te debe algo. Pero la gracia viene a romper ese contrato. Es el favor que se derrama sobre el indigno, sobre el que está cansado de fingir. No es una recompensa por tus méritos, es la respuesta de un amor que no sabe llevar cuentas. Si pudieras ganar la gracia, dejaría de serlo para convertirse en un salario. Y tú no eres un empleado del cielo, eres un habitante de su corazón. El ego siempre querrá pagar, querrá demostrar que puso de su parte, pero el amor absoluto solo te pide una cosa: que te dejes amar en tu miseria, en tu desorden, en tu verdad. No esperes a que las piezas de tu vida encajen para buscar la paz, porque es la paz la que hará que todo encaje. Suelta el remo. Deja de luchar contra la corriente de una bondad que ya te ha perdonado antes de que pidieras perdón. Recibe este escándalo hoy. No es por lo que haces, es por lo que ya fue hecho. Descansa.", p: 5000}
         ],
-        // 2. MISIÓN (300+ palabras)
+        // 2. MISIÓN
         [
-            {t: "Respira profundamente y observa cómo se te va la vida tratando de ser muchas cosas. Tratando de encajar, de proteger una imagen, de asegurar un futuro cómodo. Pero escucha la voz de tu interior: solo una cosa es necesaria. Tu vida no tiene valor si solo la ahorras para ti mismo; una vida protegida es una vida desperdiciada. Solo la vida que se entrega al propósito de la bondad produce un fruto que el tiempo no puede pudrir. Tu misión en esta tierra no es imponer códigos de conducta ni reclutar personas para una estructura fría. Tu única misión es ser un testigo. Y un testigo no es un juez. El juez emite sentencias, señala el error y dicta el castigo. El testigo, en cambio, simplemente relata lo que ha visto y oído. El testigo de la gracia es aquel que puede señalar sus propias cicatrices, sus propios errores, y decir con humildad: 'Aquí intervino algo más grande que yo'. Si tu mensaje se centra en lo que otros deben hacer, has perdido el rumbo. Si se centra en lo que ya ha sido hecho por ti, estás cumpliendo tu carrera. No corras con la pesadez del que teme ser descalificado. Corre con el gozo del que sabe que la meta ya fue alcanzada por Alguien más en su lugar. No corres para ganar, corres porque ya ganaste. Que cada conversación y cada silencio sea una oportunidad para que los demás vean la cara de la generosidad pura. Si al final del día la gente te admira a ti, has fallado. Pero si se maravillan de la bondad que te sostiene, has cumplido tu ministerio. No te distraigas con lo trivial, sé un testigo de lo esencial.", p: 5000}
+            {t: "Respira y observa la cantidad de energía que gastas tratando de ser el juez de tu propia vida y de la de los demás. Pero tu misión no es juzgar, tu misión es simplemente ser un testigo de la luz que has recibido. Un testigo no inventa la verdad, solo cuenta lo que ha visto. Y lo que tú has visto es la intervención de la bondad en tus momentos más oscuros. Tu vida no es un monumento a tu fuerza de voluntad, sino una carta escrita por la gracia para que otros la lean. No te pedí que fueras perfecto, te pedí que fueras honesto. Sé el que señala sus cicatrices y dice: 'Aquí fui sanado'. Esa es la única misión que realmente importa. Deja de preocuparte por tu reputación o por encajar en moldes religiosos. Corre tu carrera con la ligereza de quien sabe que la meta ya fue cruzada en su nombre. Si la gente te mira y ve tu esfuerzo, los has distraído. Pero si miran a través de ti y ven la generosidad que te sostiene, entonces has cumplido tu propósito. No eres el sol, eres la luna que refleja un sol que nunca se apaga. Sé ese reflejo hoy.", p: 5000}
         ],
-        // 3. FAVOR INNEGOCIABLE (300+ palabras)
+        // 3. FAVOR INNEGOCIABLE
         [
-            {t: "Dime, con total honestidad... ¿por qué intentas comprar lo que ya te fue dado? Desde la infancia aprendiste el lenguaje del intercambio: 'si haces esto, recibes aquello'. Ese sistema funciona en los mercados, pero es un veneno mortal para tu alma. El favor de la vida no está a la venta. El precio de ese favor es tan elevado que ninguna moneda humana, ni siquiera tu mayor esfuerzo de santidad, podría alcanzarlo. Intentar ponerle una etiqueta de precio a un regalo gratuito es el mayor insulto que puedes cometer contra el dador. Imagina que un amigo te invita a una cena costosa y, al terminar, sacas tu billetera para pagarle. No es gratitud, es orgullo. Estás diciendo que su generosidad tiene un precio y que eres demasiado orgulloso para estar en deuda con él. Así te acercas a lo divino cuando intentas merecer la bendición. Fuiste aceptado sin causa alguna en ti. No se encontró nada que obligara a la vida a amarte; se te amó porque la esencia de la vida es el amor mismo. Te bendice porque el dador es bueno, no porque tú lo seas. Y esta es la clave de tu libertad: si no pudiste comprar este favor con tus éxitos, tampoco puedes perderlo con tus fracasos. El favor que se gana se pierde fácilmente, pero el favor que se recibe por fe es inamovible como una montaña. No hay nada que puedas hacer hoy para que se te ame más, y no hay nada que hayas hecho ayer que haga que se te ame menos. Deja de intentar pagar con migajas de moralidad un cheque que ya fue firmado con sangre. Simplemente, abre las manos. Recibe. Y deja que la gratitud sea el único motor de tu existencia de ahora en adelante.", p: 5000}
+            {t: "¿Por qué sigues tratando de comprar un regalo? El favor de la vida no es algo que se negocia. Es innegociable porque ya fue pagado en su totalidad. No puedes aumentar el amor que se te tiene con tus ayunos, ni puedes disminuirlo con tus caídas. Te amo porque yo soy amor, no porque tú seas amable. Entiende que el regalo no depende de la calidad del que lo recibe, sino de la riqueza del que lo da. Dios no te debe nada, y tú no puedes ponerlo en deuda contigo. Intentar pagar por la gracia es el mayor insulto a la generosidad infinita. Es como si un padre le da un banquete a su hijo y el hijo saca unas monedas sucias para intentar pagar el plato. Guarda tus monedas. Guarda tu moralismo de intercambio. Abre las manos y recibe la herencia de un hijo amado. Si no pudiste ganar este favor con tu éxito, tampoco puedes perderlo con tu error. Es inamovible, es eterno, es tuyo. Camina hoy con la seguridad de quien sabe que no tiene que impresionar a nadie, porque ya ha impresionado al corazón de la vida misma sin haber hecho nada.", p: 5000}
         ],
-        // 4. COHERENCIA CORAZÓN (300+ palabras)
+        // 4. COHERENCIA CORAZÓN
         [
-            {t: "Cierra los ojos y comienza a descender hacia el silencio. No busques pensamientos, busca el espacio que hay entre ellos. Conviértete en nada. Sé nadie, en ningún lugar, en ningún tiempo. Olvida tu nombre, tu historia y las etiquetas que el mundo te ha puesto. En este instante, eres simplemente consciencia pura flotando en un océano de infinitas posibilidades. Lleva ahora tu atención al centro de tu pecho, al espacio que ocupa tu corazón en el vacío. Siente cómo cada latido envía una señal de orden y armonía a cada célula de tu cuerpo. No trates de forzar nada, simplemente observa. Siente el calor, la expansión, la vida latiendo sin tu intervención. Estás entrando en coherencia. Cuando tu corazón se sincroniza con la paz, tu cerebro se calma y tu biología se restaura. En este estado de quietud absoluta, no hay carencia, no hay miedo, no hay pasado. Solo existe el eterno ahora. Respira a través de tu corazón, permitiendo que la gratitud inunde tu sistema. La gratitud es el estado de recepción por excelencia; es decirle a la vida que ya tienes todo lo que necesitas antes de que aparezca en lo físico. Quédate en este vacío un momento más. Siente la inmensidad de la negrura que te rodea como un útero de creación. Aquí es donde los milagros dejan de ser eventos externos y se convierten en tu estado natural de ser. Eres coherencia, eres paz, eres vida plena.", p: 5000}
+            {t: "Cierra los ojos y busca el espacio entre tus pensamientos. Conviértete en nada. Sé nadie, en ningún lugar, en ningún tiempo. Olvida tu nombre y tu historia. En este instante, eres simplemente presencia. Lleva tu atención al centro de tu pecho. Siente el espacio que ocupa tu corazón. Respira a través de él. Siente cómo cada latido envía orden y armonía a cada célula. No fuerces nada, solo observa. Siente la gratitud de estar vivo aquí y ahora. Estás entrando en coherencia. Cuando tu corazón se sincroniza con la paz, tu biología se restaura. En este vacío no hay carencia, solo el eterno ahora. Quédate en este silencio creativo, donde los milagros son tu estado natural de ser. Eres paz, eres vida plena.", p: 5000}
         ],
-        // 5. RESTAURACIÓN BIOLÓGICA (300+ palabras)
+        // 5. RESTAURACIÓN BIOLÓGICA
         [
-            {t: "Lleva tu consciencia a la inteligencia que mantiene tu respiración mientras duermes. Esa misma inteligencia que sana una herida sin que tú sepas cómo. Tu cuerpo es un templo de diseño perfecto, y hoy vamos a recordar esa perfección. Dirige tu atención a tu cuello, a la zona de tu tiroides. Visualiza este centro de energía como un sol de equilibrio que regula tu tiempo y tu metabolismo. Siente cómo cualquier tensión se disuelve ante tu mirada atenta. La vida fluye a través de este centro, alineando cada glándula, cada hormona, cada proceso químico con el diseño original de la salud. Ahora, imagina que una luz de restauración viaja por tu torrente sanguíneo, llegando a cada rincón, a cada órgano, a cada tejido. Tu cuerpo no es una máquina que se rompe, es un sistema dinámico que busca constantemente el equilibrio. Dile a tus células que es seguro soltar el estado de alerta. Dile a tu sistema nervioso que la lucha ha terminado. Entra en el descanso profundo de la biología. Siente cómo tu ritmo cardíaco se suaviza y cómo tus pulmones se expanden con facilidad. La salud no es algo que debas fabricar, es algo que ya reside en ti y que hoy estás permitiendo que emerja. Eres vitalidad pura. Eres el reflejo de una idea perfecta de salud. Siente la restauración ocurriendo ahora mismo, átomo por átomo, célula por célula. Estás volviendo a casa, a tu estado natural de bienestar total.", p: 5000}
+            {t: "Tu cuerpo es un diseño de inteligencia perfecta. Hoy recordamos esa verdad. Dirige tu atención a tu cuello, a tu tiroides. Visualiza este centro como un sol de equilibrio que regula tu tiempo y tu energía. Siente cómo cualquier tensión se disuelve. La vida fluye alineando cada glándula, cada hormona, con el diseño original de la salud. Imagina una luz recorriendo tu sangre, restaurando cada tejido. Dile a tu sistema nervioso que la lucha ha terminado, es seguro descansar. No tienes que fabricar la salud, solo permitir que emerja. Eres vitalidad pura, átomo por átomo, célula por célula. Vuelve a casa, a tu estado natural de bienestar.", p: 5000}
         ],
-        // 6. PROVISIÓN (300+ palabras)
+        // 6. PROVISIÓN
         [
-            {t: "Escucha bien esta verdad: la provisión no es el resultado de tu angustia, es el resultado de tu identidad. Te has pasado años actuando como un huérfano emocional, creyendo que si no te esfuerzas hasta el agotamiento, te quedarás sin nada. Pero hoy quiero recordarte quién eres. No eres un buscador de recursos, eres un heredero de la abundancia de la vida. La provisión comienza en la filiación, en entender que estás sostenido por el mismo Poder que sostiene las galaxias y alimenta a las aves del cielo sin que ellas siembren. Tu vida financiera y material no se ordena desde afuera hacia adentro, sino desde tu centro de paz hacia el mundo. Deja de mirar la escasez con miedo, porque aquello a lo que le temes es a lo que le das poder. Administra lo que tienes con la sabiduría de quien sabe que el flujo nunca se detiene. No tienes que ganarte el derecho a ser provisto; ese derecho ya te fue confiado por el simple hecho de existir en el diseño del Padre. Suelta la ansiedad de mañana. Mañana tiene su propio flujo. Hoy, en este momento, tienes todo lo necesario para estar en paz. Visualiza tus manos abiertas, no apretadas por el miedo a perder, sino abiertas para dejar circular la bendición. La verdadera riqueza es el descanso de saber que nunca estarás desamparado. Mi vida se ordena, mis recursos se multiplican y mi corazón descansa porque soy un hijo amado. La escasez es una ilusión de la mente separada; la provisión es la realidad de la mente conectada. Camina con la frente en alto. Eres heredero. Eres provisto. Eres libre.", p: 5000}
+            {t: "La provisión no nace de tu angustia, nace de tu identidad. No eres un huérfano buscando recursos, eres un heredero. El mismo Poder que sostiene las galaxias alimenta tu vida sin que tengas que sembrar con ansiedad. Tu provisión se ordena desde tu paz interior hacia el mundo. Deja de mirar la escasez, porque el miedo le da poder a lo que no existe. Administra con sabiduría, pero desde la confianza. Tienes todo lo necesario hoy. Visualiza tus manos abiertas, dejando circular la bendición. La verdadera riqueza es el descanso de saber que nunca estarás desamparado. Eres un hijo amado, eres provisto, eres libre.", p: 5000}
         ]
     ];
 
@@ -119,10 +154,9 @@
         selectedPlaylist = index;
         document.querySelectorAll('.playlist-item').forEach(el => el.classList.remove('selected'));
         document.getElementById('item-' + index).classList.add('selected');
-        
         const colors = ["#38bdf8", "#10b981", "#fbbf24", "#f472b6", "#a78bfa", "#2dd4bf"];
         core.style.boxShadow = `0 0 50px 15px ${colors[index]}`;
-        status.innerText = "Inmersión seleccionada. Presiona Iniciar.";
+        status.innerText = "Preparado. Elige una voz e inicia.";
     }
 
     function playMusic() { music.play(); }
@@ -154,7 +188,7 @@
         clearTimeout(timer);
         core.classList.remove('active-pulse');
         document.getElementById('vPlay').classList.remove('active');
-        status.innerText = "Experiencia Finalizada";
+        status.innerText = "Shalom";
     }
 
     function hablar(index) {
@@ -166,27 +200,23 @@
         
         currentStep = index;
         const msg = new SpeechSynthesisUtterance(guion[index].t);
-        msg.lang = 'es-ES';
-        msg.rate = 0.72; // Ritmo profesional pausado
+        
+        // Asignar la voz seleccionada
+        const selectedVoiceIndex = voiceSelect.value;
+        const esVoices = voices.filter(v => v.lang.includes('es'));
+        if (esVoices[selectedVoiceIndex]) {
+            msg.voice = esVoices[selectedVoiceIndex];
+        }
+
+        msg.rate = 0.7; 
         msg.pitch = 0.85;
         msg.volume = document.getElementById('voiceVol').value;
-        
-        const voices = window.speechSynthesis.getVoices();
-        const vozM = voices.find(v => v.lang.includes('es') && (v.name.includes('David') || v.name.includes('Pablo') || v.name.includes('Google')));
-        if (vozM) msg.voice = vozM;
 
-        msg.onstart = () => { status.innerText = "Escuchando a la Consciencia..."; };
-        
-        msg.onend = () => {
-            if (isSpeaking) {
-                timer = setTimeout(() => hablar(index + 1), guion[index].p);
-            }
-        };
+        msg.onstart = () => { status.innerText = "La consciencia está hablando..."; };
+        msg.onend = () => { if (isSpeaking) timer = setTimeout(() => hablar(index + 1), guion[index].p); };
 
         window.speechSynthesis.speak(msg);
     }
-
-    window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
 </script>
 </body>
 </html>
